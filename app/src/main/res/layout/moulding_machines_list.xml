@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/moulding_machine_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/machineImage"
+        android:layout_width="93dp"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/moulding_machine" />
+
+    <TextView
+        android:id="@+id/machineName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:fontFamily="@font/alef"
+        app:layout_constraintBottom_toBottomOf="@+id/machineImage"
+        app:layout_constraintStart_toEndOf="@+id/machineImage" />
+
+</LinearLayout>
