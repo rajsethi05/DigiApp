@@ -50,5 +50,5 @@ public class DigiAppLogin extends AppCompatActivity {
 //            }
 //        });
 //    }
-//
+
 }
