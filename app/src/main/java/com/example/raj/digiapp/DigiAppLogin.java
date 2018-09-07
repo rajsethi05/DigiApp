@@ -31,12 +31,12 @@ public class DigiAppLogin extends AppCompatActivity {
         String pwd=pwdField.getText().toString();
 
         Intent intent = new Intent(this,LoggedInPage.class);
-//        startActivity(intent);
+        startActivity(intent);
 
 
-        if (empID.equals("123456") && pwd.equals("hello")){
-            startActivity(intent);
-        }
+//        if (empID.equals("123456") && pwd.equals("hello")){
+//            startActivity(intent);
+//        }
     }
 
 //    public void showMachineListPage(View view){

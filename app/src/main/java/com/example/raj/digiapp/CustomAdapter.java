@@ -11,11 +11,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<String> {
+    private int imageID;
 
-    public CustomAdapter(@NonNull Context context, String[] moulding_machine_names) {
+
+    public CustomAdapter(@NonNull Context context, String[] moulding_machine_names, int imageID) {
         super(context,R.layout.moulding_machines_list, moulding_machine_names);
+        this.imageID=imageID;
     }
 
+    /**
+     * The below method is to get the ListView and return the modified view based on the text and Image we set.
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return machineListView
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -28,7 +38,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         ImageView machineImage=(ImageView)machineListView.findViewById(R.id.machineImage);
 
         machineName.setText(singleMachine);
-        machineImage.setImageResource(R.drawable.moulding_machine);
+        machineImage.setImageResource(imageID);
 
         return machineListView;
     }

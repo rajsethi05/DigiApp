@@ -22,7 +22,9 @@ public class MachineListPage extends AppCompatActivity {
         showMouldingMachineList();
     }
 
-
+    /**
+     * The below method is identifying which option is Selected on LoggedInPage (Process Page) and sets the variables accordingly
+     */
     public void setOptionList(){
         optionSelected=getIntent().getExtras().getString("Option");
         pageTitle=(TextView)findViewById(R.id.pageTitle);
@@ -53,7 +55,7 @@ public class MachineListPage extends AppCompatActivity {
     public void showMouldingMachineList(){
         setOptionList();
         mouldingMachineList=(ListView)findViewById(R.id.machine_list);
-        ListAdapter adapter=new CustomAdapter(this, machine_names_list);
+        ListAdapter adapter=new CustomAdapter(this, machine_names_list,R.drawable.moulding_machine);
         mouldingMachineList.setAdapter(adapter);
 
         mouldingMachineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
