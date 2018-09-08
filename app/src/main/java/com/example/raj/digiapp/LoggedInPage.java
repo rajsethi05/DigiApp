@@ -38,9 +38,8 @@ public class LoggedInPage extends AppCompatActivity {
 
         //Setting the name of the logged in employee
         employeeName=(TextView)findViewById(R.id.employeeName);
-        String empName=getIntent().getExtras().getString("name");
+        String empName="Welcome Mr. "+getIntent().getExtras().getString("name");
         employeeName.setText(empName);
-
         processList = (ListView) findViewById(R.id.process_listView);
         ListAdapter adapter = new CustomAdapter(this, process_names_list, R.drawable.process);
         processList.setAdapter(adapter);
