@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 public class LoggedInPage extends AppCompatActivity {
     private static TextView mouldingOption, metallizingOption, hardCoatOption, baseCoatOption, antifogOption, assembleyOption;
     String optionSelected;
+    private static TextView employeeName;
 
     private static ListView processList;
     private static String[] process_names_list={"Moulding","Metallizing","HardCoat","BaseCoat","Antifog","Assembly"};
@@ -34,6 +35,12 @@ public class LoggedInPage extends AppCompatActivity {
      */
 
     public void showMachineListPage() {
+
+        //Setting the name of the logged in employee
+        employeeName=(TextView)findViewById(R.id.employeeName);
+        String empName=getIntent().getExtras().getString("name");
+        employeeName.setText(empName);
+
         processList = (ListView) findViewById(R.id.process_listView);
         ListAdapter adapter = new CustomAdapter(this, process_names_list, R.drawable.process);
         processList.setAdapter(adapter);
@@ -43,6 +50,7 @@ public class LoggedInPage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = (String) processList.getItemAtPosition(i);
                 Intent intent = new Intent(LoggedInPage.this, MachineListPage.class);
+
 
                 if (value.equals("Moulding")) {
                     intent.putExtra("Option", "Moulding");
