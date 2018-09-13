@@ -1,5 +1,6 @@
 package com.example.raj.digiapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,6 +64,8 @@ public class MachineListPage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String value=(String)mouldingMachineList.getItemAtPosition(i);
                 Toast.makeText(MachineListPage.this,"You Tapped",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(MachineListPage.this,ActivitiesScreen.class);
+                startActivity(intent);
             }
         });
     }

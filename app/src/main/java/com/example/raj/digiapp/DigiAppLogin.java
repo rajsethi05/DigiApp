@@ -1,5 +1,6 @@
 package com.example.raj.digiapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import java.util.Map;
 
 public class DigiAppLogin extends AppCompatActivity {
 
+    private static ProgressDialog progress;
 
 
     @Override
@@ -36,11 +38,17 @@ public class DigiAppLogin extends AppCompatActivity {
         //The below if/else is to check if internet or wifi connection is available.
         if(!isConnected(DigiAppLogin.this)) buildDialog(DigiAppLogin.this).show();
         else {
-            Toast.makeText(DigiAppLogin.this,"Welcome", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(DigiAppLogin.this,"Welcome", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_digi_app_login);
         }
 
     }
+
+//    public void verifyLoginCredentials(View v){
+//        Intent i=new Intent(this,LoggedInPage.class);
+//        startActivity(i);
+//    }
+
 
     public void verifyLoginCredentials(View view){
 
@@ -55,8 +63,19 @@ public class DigiAppLogin extends AppCompatActivity {
             String pwd=pwdField.getText().toString();
             String type="login";
 
+            //Below is the code to set loading indicator
+            progress=new ProgressDialog(this);
+            progress.setTitle("Loading");
+            progress.setMessage("Wait while we login...");
+            progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+            progress.show();
+
             //Calling the DBConnection Class which will take the EmpID and Pwd and fetch result from DB
             DBConnection dbConnection=new DBConnection(DigiAppLogin.this);
+
+            //TODO: Remove it formally
+            empID="123456";
+            pwd="hello";
             dbConnection.execute(type,empID,pwd);
         }
 
@@ -76,6 +95,9 @@ public class DigiAppLogin extends AppCompatActivity {
         Intent intent=new Intent(ctx,LoggedInPage.class);
         if(result.get("empId").equals("123456")) {
             intent.putExtra("name",result.get("empName"));
+
+            // To dismiss the loading indicator and show login page
+            progress.dismiss();
             ctx.startActivity(intent);
         }
 }
@@ -123,6 +145,5 @@ public class DigiAppLogin extends AppCompatActivity {
 
         return builder;
     }
-
 
 }
