@@ -1,5 +1,7 @@
 package com.example.raj.digiapp;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +17,11 @@ import android.widget.Toast;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,21 +59,28 @@ public class ActivitiesScreen extends AppCompatActivity {
         });
     }
 
+
     private void setShift(){
         SimpleDateFormat format=new SimpleDateFormat("HH:mm:ss");
-        try {
 
-            Date currentTime=format.parse("7:00:01");
+        //Take current system date and calculate the shift accordingly
+        try {
+            Date time= Calendar.getInstance().getTime();
+            Date currentTime=format.parse(format.format(time));
+            System.out.println(currentTime);
             Date shiftAStart=format.parse("7:00:00");
             Date shiftAEnd=format.parse("15:00:00");
             Date shiftBEnd=format.parse("23:30:00");
             Date shiftCStartBrk1=format.parse("23:59:59");
             Date shiftCStartBrk2=format.parse("00:00:00");
 
+            //Shift-A from 7am to 3pm
             if(currentTime.after(shiftAStart) && currentTime.before(shiftAEnd)) {
                 shift="A";
+                //Shift-B from 3pm to 11:30pm
             }else if(currentTime.after(shiftAEnd) && currentTime.before(shiftBEnd)) {
                 shift="B";
+                //Shift-C from 11:30pm to 7am
             }else if(currentTime.after(shiftBEnd) && currentTime.before(shiftCStartBrk1)){
                 shift="C";
             }else if(currentTime.after(shiftCStartBrk2)&&currentTime.before(shiftAStart)) {
