@@ -30,6 +30,8 @@ import java.util.Map;
 public class DigiAppLogin extends AppCompatActivity {
 
     private static ProgressDialog progress;
+    private static View v;
+    private static EditText empIDField;
 
 
     @Override
@@ -44,16 +46,14 @@ public class DigiAppLogin extends AppCompatActivity {
 
     }
 
-//    public void verifyLoginCredentials(View v){
-//        Intent i=new Intent(this,LoggedInPage.class);
-//        startActivity(i);
-//    }
+
 
 
     public void verifyLoginCredentials(View view){
+        v=view;
 
         //Finding the empid and pwd field by ID from layout
-        EditText empIDField=findViewById(R.id.employeeId);
+        empIDField=findViewById(R.id.employeeId);
         EditText pwdField=findViewById(R.id.Password_field);
 
         if(empIDField.getText().length()==0){
@@ -74,8 +74,8 @@ public class DigiAppLogin extends AppCompatActivity {
             DBConnection dbConnection=new DBConnection(DigiAppLogin.this);
 
             //TODO: Remove it formally
-            empID="123456";
-            pwd="hello";
+//            empID="123456";
+//            pwd="hello";
             dbConnection.execute(type,empID,pwd);
         }
 
@@ -93,12 +93,20 @@ public class DigiAppLogin extends AppCompatActivity {
      */
     public void showLoggedInPage(Context ctx, Map<String,String >result){
         Intent intent=new Intent(ctx,LoggedInPage.class);
-        if(result.get("empId").equals("123456")) {
+        if(result.get("status").equals("1")) {
             intent.putExtra("name",result.get("empName"));
 
             // To dismiss the loading indicator and show login page
             progress.dismiss();
             ctx.startActivity(intent);
+        }else if (result.get("status").equals("0")){
+            progress.dismiss();
+            //TODO: Replace below process by dispaying error msg
+            empIDField.setError("Please check ur credentials");
+        }else if(result.get("status").equals("-1")){
+            progress.dismiss();
+            //TODO: Replace below process by dispaying error msg
+            empIDField.setError("Credentials do not exist");
         }
 }
 
