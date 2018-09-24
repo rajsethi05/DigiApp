@@ -15,7 +15,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
 
     public CustomAdapter(@NonNull Context context, String[] moulding_machine_names, int imageID) {
-        super(context,R.layout.moulding_machines_list, moulding_machine_names);
+        super(context,R.layout.moulding_machines_list_layout, moulding_machine_names);
         this.imageID=imageID;
     }
 
@@ -30,7 +30,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater=LayoutInflater.from(getContext());
-        View machineListView=inflater.inflate(R.layout.moulding_machines_list,parent,false);
+        View machineListView=inflater.inflate(R.layout.moulding_machines_list_layout,parent,false);
 
         String singleMachine=getItem(position);
 
