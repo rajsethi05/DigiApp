@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/login_margins" >
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/logo" />
+
+            <EditText
+                android:id="@+id/employeeId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerVertical="true"
+                android:hint="@string/login_emp_id"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/Password_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/employeeId"
+                android:layout_centerVertical="true"
+                android:hint="@string/login_pass"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/Login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Password_field"
+                android:layout_centerHorizontal="true"
+                android:onClick="verifyLoginCredentials"
+                android:text="@string/login_button" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
