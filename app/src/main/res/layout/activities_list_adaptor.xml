@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_margin="@dimen/activity_margins"
+            android:id="@+id/activity_category"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="TextView" />
+
+        <TextView
+            android:layout_margin="@dimen/activity_margins"
+            android:id="@+id/activity_program"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_margin="@dimen/activity_margins"
+            android:id="@+id/activity_checked"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_margin="@dimen/activity_margins"
+            android:id="@+id/instruction"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:maxLines="3"
+            android:scrollHorizontally="false"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>
